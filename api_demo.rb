@@ -2,11 +2,12 @@ require 'json'
 require 'open-uri'
 
 # TODO - Let's fetch name and bio from a given GitHub username
-url = 'https://api.github.com/users/yannklein'
+# base_url = 'https://animechan.vercel.app/api'
+# end_point =  '/random'
 
-user_serialized = URI.open(url).read
-# p user_serialized
+url = 'https://animechan.vercel.app/api/random'
 
-user = JSON.parse(user_serialized)
+url_serialized = URI.open(url).read
+anime_quotes = JSON.parse(url_serialized)
 
-p user["blog"]
+puts "#{anime_quotes["anime"]} - #{anime_quotes["character"]} said #{anime_quotes["quote"][0..30]}..."
